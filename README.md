@@ -28,7 +28,7 @@ Windows notes:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/practice-test-automation-e2e.git
+git clone https://github.com/YeaminHasan/practice-test-automation-e2e.git
 cd practice-test-automation-e2e
 ```
 
