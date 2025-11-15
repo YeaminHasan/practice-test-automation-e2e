@@ -13,7 +13,7 @@ def browser():
 @pytest.fixture(scope="module")
 def context(browser):
     """Create a browser context per test module with geolocation permissions."""
-    context = browser.new_context()
+    context = browser.new_context(viewport={"width": 1920, "height": 1080})
     yield context
     context.close()
 
