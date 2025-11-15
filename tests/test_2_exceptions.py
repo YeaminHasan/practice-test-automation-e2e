@@ -8,7 +8,7 @@ def second_row_input(page: Page):return page.locator("input").nth(1)
 def save_button_visible(page: Page): return page.locator('[name="Save"]:visible')
 
 
-def test_no_such_element_with_wait(page: Page):
+def test_no_such_element_with_wait(page: Page): #TestCase 1
     """Test case 1: Wait for Row 2 to appear to avoid NoSuchElementException.
     Without the explicit wait the test would fail with a NoSuchElementException
     because Row 2 appears asynchronously."""
@@ -20,7 +20,7 @@ def test_no_such_element_with_wait(page: Page):
     assert second.is_visible()
 
 
-def test_element_not_interactable_and_save(page: Page):
+def test_element_not_interactable_and_save(page: Page): #TestCase 2
     """Test case 2: Type into second input and click the visible Save button.
     The page contains two elements with name="Save"; the first one is
     invisible. Clicking the invisible one would cause an ElementNotInteractable
@@ -36,7 +36,7 @@ def test_element_not_interactable_and_save(page: Page):
     expect(page.get_by_role("textbox").nth(1)).to_have_value("My favorite food")
 
 
-def test_invalid_element_state_enable_edit_and_type(page: Page):
+def test_invalid_element_state_enable_edit_and_type(page: Page): #TestCase 3
     """Test case 3: Enable editing and change the input value.
     The input is disabled initially; attempting to clear or type into it will
     raise an exception. Click the Edit control first, then type and verify."""
@@ -49,7 +49,7 @@ def test_invalid_element_state_enable_edit_and_type(page: Page):
     assert input_field.input_value() == "Editable now"
 
 
-def test_stale_element_reference_behavior(page: Page):
+def test_stale_element_reference_behavior(page: Page): #TestCase 4
     """Test case 4: Confirm an element becomes detached after adding a row.
     In Selenium or Playwright this causes StaleElementReferenceException. Here we assert the
     original instructions element is no longer attached after clicking Add."""
@@ -60,7 +60,7 @@ def test_stale_element_reference_behavior(page: Page):
     assert not instructions_text_element.is_visible()
 
 
-def test_timeout_exception_demo(page: Page):
+def test_timeout_exception_demo(page: Page): #TestCase 5
     """Test case 5: Demonstrate a timeout when waiting too briefly for Row 2.
 
     The row appears after ~5s on the demo page; waiting only 3s should raise

@@ -3,7 +3,7 @@ import pytest
 BASE_URL = "https://practicetestautomation.com/practice-test-login/"
 
 
-def test_login_positive(page):
+def test_login_positive(page): #TestCase 1
     """Positive login: correct username and password should succeed."""
     page.goto(BASE_URL)
     # fill form
@@ -17,7 +17,7 @@ def test_login_positive(page):
     assert page.is_visible("text=Log out")
 
 
-def test_login_negative_username(page):
+def test_login_negative_username(page): #TestCase 2
     """Negative test: invalid username shows correct error message."""
     page.goto(BASE_URL)
     page.fill("#username", "incorrectUser")
@@ -27,7 +27,7 @@ def test_login_negative_username(page):
     assert page.text_content("#error").strip() == "Your username is invalid!"
 
 
-def test_login_negative_password(page):
+def test_login_negative_password(page): #TestCase 3
     """Negative test: invalid password shows correct error message."""
     page.goto(BASE_URL)
     page.fill("#username", "student")
